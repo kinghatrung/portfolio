@@ -88,8 +88,8 @@ const Hero = () => {
               className="mb-10 max-w-lg"
               style={{ fontSize: "clamp(1rem, 2vw, 1.15rem)", lineHeight: 1.7, color: "rgba(241,245,249,0.55)" }}
             >
-              I craft immersive digital experiences at the intersection of engineering and art — combining React,
-              Three.js, and motion design to build things that feel alive.
+              I craft immersive digital experiences at the intersection of engineering and art — combining React, Next
+              and motion design to build things that feel alive.
             </motion.p>
 
             {/* CTAs */}
@@ -116,7 +116,9 @@ const Hero = () => {
                 />
               </a>
               <a
-                href="mailto:huyen@example.com"
+                href="https://github.com/kinghatrung"
+                rel="noopener noreferrer"
+                target="_blank"
                 className="flex items-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-sm transition-all duration-300"
                 style={{
                   background: "rgba(255,255,255,0.04)",
@@ -124,7 +126,6 @@ const Hero = () => {
                   color: "rgba(241,245,249,0.8)",
                 }}
                 data-cursor="open"
-                aria-label="Contact me"
               >
                 <GithubIcon size={16} />
                 Get in Touch
@@ -133,24 +134,10 @@ const Hero = () => {
 
             {/* Social links */}
             <motion.div variants={itemVariants} className="flex items-center gap-6">
-              {[{ label: "GitHub", href: "https://github.com/", icon: <GithubIcon size={18} /> }].map((s) => (
-                <a
-                  key={s.label}
-                  href={s.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-sm transition-colors duration-200"
-                  style={{ color: "rgba(241,245,249,0.4)" }}
-                  aria-label={s.label}
-                  data-cursor="open"
-                >
-                  {s.icon}
-                  <span>{s.label}</span>
-                </a>
-              ))}
+              <span style={{ fontSize: 12, color: "rgba(241,245,249,0.3)", letterSpacing: "0.1em" }}>Open to Work</span>
               <div style={{ width: 40, height: 1, background: "rgba(255,255,255,0.1)" }} />
               <span style={{ fontSize: 12, color: "rgba(241,245,249,0.3)", letterSpacing: "0.1em" }}>
-                Ho Chi Minh City, VN
+                Ha Noi City, VN
               </span>
             </motion.div>
           </motion.div>

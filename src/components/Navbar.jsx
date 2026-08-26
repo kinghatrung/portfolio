@@ -117,7 +117,7 @@ const Navbar = () => {
 
           {/* Desktop CTA */}
           <a
-            href="mailto:huyen@example.com"
+            href="mailto:nmhuyen2706@gmail.com"
             className="hidden md:flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200"
             style={{
               background: "rgba(79,142,247,0.1)",
@@ -184,7 +184,7 @@ const Navbar = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0 }}
                 transition={{ delay: navLinks.length * 0.07 + 0.1, duration: 0.3 }}
-                href="mailto:huyen@example.com"
+                href="mailto:nmhuyen2706@gmail.com"
                 className="mt-8 px-8 py-3 rounded-xl font-semibold text-lg"
                 style={{
                   background: "rgba(79,142,247,0.15)",

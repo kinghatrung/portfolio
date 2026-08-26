@@ -1,6 +1,8 @@
 import projectChat from "../assets/carrent.png";
 import projectRoom from "../assets/jobit.png";
-import project3d from "../assets/tripguide.png";
+import project3d from "../assets/portfolio.png";
+import insight from "../assets/in-blog.png";
+import vietnews from "../assets/viet-news.png";
 
 export const navLinks = [
   { id: "about", title: "About" },
@@ -54,37 +56,47 @@ export const skillCategories = [
     name: "Frontend",
     color: "#4f8ef7",
     skills: [
-      { name: "React", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
-      { name: "Next.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
-      {
-        name: "TypeScript",
-        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
-      },
+      { name: "HTML5", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" },
+      { name: "CSS3", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" },
       {
         name: "JavaScript",
         icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
       },
-      { name: "HTML5", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" },
-      { name: "CSS3", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" },
+      {
+        name: "Sass",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg",
+      },
+      {
+        name: "TypeScript",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+      },
+      { name: "React", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+      { name: "Next.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
+      { name: "React Native", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+      { name: "Expo", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/expo/expo-original.svg" },
       {
         name: "Tailwind",
         icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg",
       },
-    ],
-  },
-  {
-    name: "3D / Creative",
-    color: "#22d3ee",
-    skills: [
-      { name: "Three.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/threejs/threejs-original.svg" },
       {
-        name: "React Three Fiber",
-        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+        name: "Bootstrap",
+        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg",
       },
-      { name: "WebGL", icon: "https://upload.wikimedia.org/wikipedia/commons/2/25/WebGL_Logo.svg" },
-      { name: "GLSL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opengl/opengl-original.svg" },
     ],
   },
+  // {
+  //   name: "3D / Creative",
+  //   color: "#22d3ee",
+  //   skills: [
+  //     { name: "Three.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/threejs/threejs-original.svg" },
+  //     {
+  //       name: "React Three Fiber",
+  //       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+  //     },
+  //     { name: "WebGL", icon: "https://upload.wikimedia.org/wikipedia/commons/2/25/WebGL_Logo.svg" },
+  //     { name: "GLSL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opengl/opengl-original.svg" },
+  //   ],
+  // },
   {
     name: "Backend",
     color: "#7c3aed",
@@ -96,6 +108,7 @@ export const skillCategories = [
         icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
       },
       { name: "MongoDB", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" },
+      { name: "Redis", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg" },
     ],
   },
   {
@@ -103,6 +116,7 @@ export const skillCategories = [
     color: "#f59e0b",
     skills: [
       { name: "Git", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
+      { name: "GitLab", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/gitlab/gitlab-original.svg" },
       { name: "Docker", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" },
       { name: "Figma", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" },
       { name: "VS Code", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" },
@@ -115,22 +129,21 @@ export const projects = [
     number: "01",
     title: "Real-time Chat Platform",
     description:
-      "A full-stack messenger-style application with real-time messaging, story sharing, file uploads, and end-to-end encryption. Built for performance with Socket.IO and optimized React Native client.",
+      "A modern real-time chat platform built as a full-stack monorepo with Web, Mobile and API applications.",
     image: projectChat,
-    technologies: ["React", "Node.js", "Socket.IO", "PostgreSQL"],
-    github: "https://github.com/",
-    demo: "https://github.com/",
+    technologies: ["Next.js", "React Native", "Node.js", "Express.js", "TypeScript", "Socket.IO", "MongoDB"],
+    github: "https://github.com/kinghatrung/halo-chat-platform",
+    demo: "https://github.com/kinghatrung/halo-chat-platform",
     color: "#4f8ef7",
   },
   {
     number: "02",
     title: "Room Finder Platform",
-    description:
-      "A property rental platform with advanced map-based search, real-time availability, and landlord management portal. Features PostGIS spatial queries and a Next.js front-end.",
+    description: "Smart rental platform for finding, listing, booking, and managing rooms across Web & Mobile.",
     image: projectRoom,
-    technologies: ["Next.js", "TypeScript", "Node.js", "PostgreSQL"],
-    github: "https://github.com/",
-    demo: "https://github.com/",
+    technologies: ["Next.js", "React Native", "Node.js", "Express.js", "TypeScript", "MongoDB"],
+    github: "https://github.com/kinghatrung/tro_oi_platform",
+    demo: "https://github.com/kinghatrung/tro_oi_platform",
     color: "#7c3aed",
   },
   {
@@ -148,17 +161,28 @@ export const projects = [
     number: "04",
     title: "News Aggregation Platform",
     description:
-      "An AI-powered news aggregation platform that crawls, categorizes, and surfaces relevant articles. Python backend with NLP sentiment analysis and a clean editorial React UI.",
-    image: null,
-    technologies: ["React", "Express", "Python", "NLP"],
-    github: "https://github.com/",
-    demo: "https://github.com/",
+      "A full-stack news platform with separate Frontend, Backend and Machine Learning services for automated content moderation.",
+    image: vietnews,
+    technologies: ["React", "Node.js", "Express.js", "Python", "Flask", "NLP", "Machine Learning", "MongoDB"],
+    github: "https://github.com/kinghatrung/vietnews",
+    demo: "https://vietnews.onrender.com/",
+    color: "#f59e0b",
+  },
+  {
+    number: "05",
+    title: "Insight - Blog & Analytics Platform",
+    description:
+      "Full-stack blog platform with analytics dashboard, RBAC, Redis view tracking, Cloudinary and modern React architecture.",
+    image: insight,
+    technologies: ["React", "Node.js", "Express.js", "TypeScript", "Redis", "Cloudinary", "MongoDB"],
+    github: "https://github.com/kinghatrung/Insight_blog",
+    demo: "https://insight-blog-eta.vercel.app/",
     color: "#f59e0b",
   },
 ];
 
 export const socialLinks = [
-  { label: "GitHub", href: "https://github.com/", icon: "github" },
-  { label: "LinkedIn", href: "https://linkedin.com/", icon: "linkedin" },
-  { label: "Email", href: "mailto:huyen@example.com", icon: "mail" },
+  { label: "GitHub", href: "https://github.com/kinghatrung", icon: "github" },
+  { label: "Facebook", href: "https://www.facebook.com/huyen2706", icon: "facebook" },
+  { label: "Email", href: "mailto:nmhuyen2706@gmail.com", icon: "mail" },
 ];

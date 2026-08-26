@@ -412,7 +412,7 @@ const Projects = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            href="https://github.com/"
+            href="https://github.com/kinghatrung"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 text-sm font-medium flex-shrink-0"
@@ -423,7 +423,7 @@ const Projects = () => {
           </motion.a>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
           {projects.map((project) => (
             <ProjectCard key={project.number} project={project} onClick={() => setSelectedProject(project)} />
           ))}

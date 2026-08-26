@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight, Copy, Check } from "lucide-react";
-import { GithubIcon, LinkedinIcon, MailIcon } from "./ui/SocialIcons";
+import { GithubIcon, FacebookIcon, MailIcon } from "./ui/SocialIcons";
 import { socialLinks } from "../data";
 
-const EMAIL = "alex@example.com";
+const EMAIL = "nmhuyen2706@gmail.com";
 
 const Contact = () => {
   const [copied, setCopied] = useState(false);
@@ -16,7 +16,7 @@ const Contact = () => {
     });
   };
 
-  const iconMap = { github: GithubIcon, linkedin: LinkedinIcon, mail: MailIcon };
+  const iconMap = { github: GithubIcon, facebook: FacebookIcon, mail: MailIcon };
 
   return (
     <section id="contact" className="relative section-padding overflow-hidden" aria-label="Contact">

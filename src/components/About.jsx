@@ -5,7 +5,7 @@ import { MapPin, Code2, Layers, Zap } from "lucide-react";
 const FloatingGeometry = lazy(() => import("./three/FloatingGeometry"));
 
 const stats = [
-  { value: "3+", label: "Years Learning" },
+  { value: "4+", label: "Years Learning" },
   { value: "10+", label: "Projects Built" },
   { value: "4", label: "Tech Stacks" },
   { value: "∞", label: "Coffee Consumed" },
@@ -66,8 +66,8 @@ const About = () => (
             variants={itemVariants}
             style={{ fontSize: "1.05rem", lineHeight: 1.8, color: "rgba(241,245,249,0.6)" }}
           >
-            I'm a Frontend Engineer and Creative Developer based in Ho Chi Minh City, Vietnam. I specialize in building
-            performant, interactive web experiences using React, Three.js, and modern animation libraries.
+            I'm a Frontend Engineer in Ha Noi City, Vietnam. I specialize in building performant, interactive web
+            experiences using React, Next, Node, Express and modern animation libraries.
           </motion.p>
 
           <motion.p
@@ -75,8 +75,8 @@ const About = () => (
             style={{ fontSize: "1.05rem", lineHeight: 1.8, color: "rgba(241,245,249,0.6)" }}
           >
             My work sits at the intersection of engineering precision and creative exploration — whether that's crafting
-            smooth UI systems, implementing WebGL shaders, or designing interactions that feel satisfying to use. I
-            believe the web is the most accessible creative medium, and I take that seriously.
+            smooth UI systems, or designing interactions that feel satisfying to use. I believe the web is the most
+            accessible creative medium, and I take that seriously.
           </motion.p>
 
           {/* Highlights */}
@@ -92,7 +92,7 @@ const About = () => (
           {/* Location */}
           <motion.div variants={itemVariants} className="flex items-center gap-2 pt-2">
             <MapPin size={14} style={{ color: "#4f8ef7" }} />
-            <span style={{ fontSize: "0.9rem", color: "rgba(241,245,249,0.4)" }}>Ho Chi Minh City, Vietnam</span>
+            <span style={{ fontSize: "0.9rem", color: "rgba(241,245,249,0.4)" }}>Ha Noi City, Vietnam</span>
           </motion.div>
 
           {/* Stats */}
