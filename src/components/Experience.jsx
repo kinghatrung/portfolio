@@ -3,22 +3,60 @@ import { experiences } from "../data";
 
 const TimelineCard = ({ exp, index }) => {
   const isLeft = index % 2 === 0;
+
   return (
     <motion.div
-      initial={{ opacity: 0, x: isLeft ? -40 : 40 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-      className="relative flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8"
-      style={{ justifyContent: isLeft ? "flex-end" : "flex-start" }}
+      initial={{
+        opacity: 0,
+        x: isLeft ? -40 : 40,
+      }}
+      whileInView={{
+        opacity: 1,
+        x: 0,
+      }}
+      viewport={{
+        once: true,
+        margin: "-60px",
+      }}
+      transition={{
+        duration: 0.6,
+        ease: [0.16, 1, 0.3, 1],
+        delay: 0.1,
+      }}
+      className="w-full"
     >
-      {/* Card */}
-      <div className="flex-1 p-6 rounded-2xl glass glass-hover" style={{ maxWidth: 480 }}>
+      <div
+        className="w-full p-5 md:p-6 rounded-2xl glass glass-hover"
+        style={{
+          maxWidth: 480,
+          marginLeft: isLeft ? "auto" : 0,
+          marginRight: isLeft ? 0 : "auto",
+        }}
+      >
         <div className="flex items-start justify-between gap-4 mb-3">
-          <div>
-            <h3 style={{ fontSize: "1.05rem", fontWeight: 700, color: "#f1f5f9", marginBottom: 2 }}>{exp.title}</h3>
-            <p style={{ fontSize: "0.875rem", color: "#4f8ef7", fontWeight: 600 }}>{exp.company}</p>
+          <div className="min-w-0">
+            <h3
+              style={{
+                fontSize: "1.05rem",
+                fontWeight: 700,
+                color: "#f1f5f9",
+                marginBottom: 2,
+              }}
+            >
+              {exp.title}
+            </h3>
+
+            <p
+              style={{
+                fontSize: "0.875rem",
+                color: "#4f8ef7",
+                fontWeight: 600,
+              }}
+            >
+              {exp.company}
+            </p>
           </div>
+
           <span
             style={{
               fontSize: 11,
@@ -32,9 +70,18 @@ const TimelineCard = ({ exp, index }) => {
             {exp.duration}
           </span>
         </div>
-        <p style={{ fontSize: "0.9rem", lineHeight: 1.7, color: "rgba(241,245,249,0.55)", marginBottom: 16 }}>
+
+        <p
+          style={{
+            fontSize: "0.9rem",
+            lineHeight: 1.7,
+            color: "rgba(241,245,249,0.55)",
+            marginBottom: 16,
+          }}
+        >
           {exp.description}
         </p>
+
         <div className="flex flex-wrap gap-2">
           {exp.technologies.map((tech) => (
             <span
@@ -60,9 +107,11 @@ const TimelineCard = ({ exp, index }) => {
 };
 
 const Experience = () => (
-  <section id="experience" className="relative section-padding" aria-label="Experience">
+  <section id="experience" className="relative section-padding overflow-hidden" aria-label="Experience">
     <span className="hash-span" />
+
     <div className="max-container">
+      {/* Header */}
       <motion.p
         initial={{ opacity: 0, y: 16 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -79,6 +128,7 @@ const Experience = () => (
       >
         — Experience
       </motion.p>
+
       <motion.h2
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -96,21 +146,52 @@ const Experience = () => (
           initial={{ scaleY: 0 }}
           whileInView={{ scaleY: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 1.2, ease: "easeInOut" }}
-          className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px origin-top"
-          style={{ background: "linear-gradient(to bottom, #4f8ef7, rgba(124,58,237,0.5), transparent)" }}
+          transition={{
+            duration: 1.2,
+            ease: "easeInOut",
+          }}
+          className="
+            absolute
+            left-[7px]
+            md:left-1/2
+            top-0
+            bottom-0
+            w-px
+            origin-top
+          "
+          style={{
+            background: "linear-gradient(to bottom, #4f8ef7, rgba(124,58,237,0.5), transparent)",
+          }}
         />
 
-        <div className="flex flex-col gap-12 pl-10 md:pl-0">
+        <div className="flex flex-col gap-12">
           {experiences.map((exp, i) => (
-            <div key={exp.title + i} className="relative flex items-start gap-6 md:gap-0">
+            <div
+              key={exp.title + i}
+              className="
+                relative
+                pl-8
+                md:pl-0
+              "
+            >
               {/* Timeline dot */}
               <motion.div
                 initial={{ scale: 0 }}
                 whileInView={{ scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: 0.2, type: "spring", bounce: 0.4 }}
-                className="absolute -left-10 md:left-1/2 top-6 flex-shrink-0"
+                transition={{
+                  duration: 0.4,
+                  delay: 0.2,
+                  type: "spring",
+                  bounce: 0.4,
+                }}
+                className="
+                  absolute
+                  left-[1px]
+                  md:left-1/2
+                  top-6
+                  -translate-x-1/2
+                "
                 style={{
                   width: 14,
                   height: 14,
@@ -118,25 +199,26 @@ const Experience = () => (
                   background: "#4f8ef7",
                   border: "3px solid #050816",
                   boxShadow: "0 0 12px rgba(79,142,247,0.6)",
-                  transform: "translate(-50%, 0)",
-                  zIndex: 1,
+                  zIndex: 2,
                 }}
               />
-              {/* Alternating card sides on desktop */}
-              <div className="w-full md:flex md:gap-8">
+
+              {/* Mobile */}
+              <div className="md:hidden w-full min-w-0">
+                <TimelineCard exp={exp} index={i} />
+              </div>
+
+              {/* Desktop */}
+              <div className="hidden md:grid md:grid-cols-2 md:gap-8">
                 {i % 2 === 0 ? (
                   <>
-                    <div className="flex-1" />
-                    <div className="flex-1 mt-0">
-                      <TimelineCard exp={exp} index={i} />
-                    </div>
+                    <div />
+                    <TimelineCard exp={exp} index={i} />
                   </>
                 ) : (
                   <>
-                    <div className="flex-1">
-                      <TimelineCard exp={exp} index={i} />
-                    </div>
-                    <div className="flex-1" />
+                    <TimelineCard exp={exp} index={i} />
+                    <div />
                   </>
                 )}
               </div>
