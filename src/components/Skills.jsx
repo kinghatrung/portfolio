@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { skillCategories } from "../data";
+import RichText from "./ui/RichText";
+import content from "../data";
+
+const { skills } = content;
 
 const SkillIcon = ({ skill, categoryColor }) => {
   const [hovered, setHovered] = useState(false);
@@ -107,11 +110,11 @@ const SkillIcon = ({ skill, categoryColor }) => {
 };
 
 const Skills = () => {
-  const [activeCategory, setActiveCategory] = useState("All");
+  const [activeCategory, setActiveCategory] = useState(skills.allLabel);
 
-  const allCategories = ["All", ...skillCategories.map((c) => c.name)];
+  const allCategories = [skills.allLabel, ...skills.categories.map((c) => c.name)];
   const filteredCategories =
-    activeCategory === "All" ? skillCategories : skillCategories.filter((c) => c.name === activeCategory);
+    activeCategory === skills.allLabel ? skills.categories : skills.categories.filter((c) => c.name === activeCategory);
 
   return (
     <section id="skills" className="relative section-padding" aria-label="Skills">
@@ -131,7 +134,7 @@ const Skills = () => {
             marginBottom: 16,
           }}
         >
-          — Skills
+          {skills.label}
         </motion.p>
         <motion.h2
           initial={{ opacity: 0, y: 24 }}
@@ -140,7 +143,7 @@ const Skills = () => {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="display-md mb-8"
         >
-          My <span className="text-gradient-blue">toolkit</span>.
+          <RichText text={skills.heading} />
         </motion.h2>
 
         {/* Category filters */}

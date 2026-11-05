@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import content from "../../data";
 
 const LoadingScreen = ({ onComplete }) => {
   const [progress, setProgress] = useState(0);
@@ -89,7 +90,7 @@ const LoadingScreen = ({ onComplete }) => {
                   textTransform: "uppercase",
                 }}
               >
-                LOADING EXPERIENCE
+                {content.site.loadingText}
               </p>
             </div>
           </motion.div>

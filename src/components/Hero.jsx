@@ -3,8 +3,11 @@ import { motion } from "framer-motion";
 import { ArrowDown, ExternalLink } from "lucide-react";
 import { GithubIcon } from "./ui/SocialIcons";
 import { Suspense, lazy } from "react";
+import RichText from "./ui/RichText";
+import content from "../data";
 
 const HeroScene = lazy(() => import("./three/HeroScene"));
+const { hero } = content;
 
 const Hero = () => {
   const mouse = useRef({ x: 0, y: 0 });
@@ -44,33 +47,35 @@ const Hero = () => {
             animate="visible"
           >
             {/* Status badge */}
-            <motion.div variants={itemVariants} className="mb-6">
-              <span
-                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium"
-                style={{
-                  background: "rgba(79,142,247,0.1)",
-                  border: "1px solid rgba(79,142,247,0.25)",
-                  color: "#4f8ef7",
-                }}
-              >
+            {hero.badge && (
+              <motion.div variants={itemVariants} className="mb-6">
                 <span
+                  className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium"
                   style={{
-                    width: 6,
-                    height: 6,
-                    borderRadius: "50%",
-                    backgroundColor: "#22d3ee",
-                    display: "inline-block",
-                    boxShadow: "0 0 8px #22d3ee",
+                    background: "rgba(79,142,247,0.1)",
+                    border: "1px solid rgba(79,142,247,0.25)",
+                    color: "#4f8ef7",
                   }}
-                />
-                Available for new projects
-              </span>
-            </motion.div>
+                >
+                  <span
+                    style={{
+                      width: 6,
+                      height: 6,
+                      borderRadius: "50%",
+                      backgroundColor: "#22d3ee",
+                      display: "inline-block",
+                      boxShadow: "0 0 8px #22d3ee",
+                    }}
+                  />
+                  {hero.badge}
+                </span>
+              </motion.div>
+            )}
 
             {/* Main heading */}
             <motion.h1 variants={itemVariants} className="display-xl mb-4" style={{ color: "#f1f5f9" }}>
-              Hi, I'm <span className="text-gradient-blue">Huyen</span>
-              <span style={{ color: "rgba(79,142,247,0.6)" }}>.</span>
+              <RichText text={hero.heading} />
+              <span style={{ color: "rgba(79,142,247,0.6)" }}>{hero.headingSuffix}</span>
             </motion.h1>
 
             {/* Role */}
@@ -79,7 +84,7 @@ const Hero = () => {
               className="display-md mb-6"
               style={{ color: "rgba(241,245,249,0.5)", fontWeight: 600 }}
             >
-              Frontend Engineer
+              {hero.role}
             </motion.h2>
 
             {/* Description */}
@@ -88,17 +93,17 @@ const Hero = () => {
               className="mb-10 max-w-lg"
               style={{ fontSize: "clamp(1rem, 2vw, 1.15rem)", lineHeight: 1.7, color: "rgba(241,245,249,0.55)" }}
             >
-              I craft immersive digital experiences at the intersection of engineering and art — combining React, Next
-              and motion design to build things that feel alive.
+              {hero.description}
             </motion.p>
 
             {/* CTAs */}
             <motion.div variants={itemVariants} className="flex flex-wrap gap-4 mb-12">
               <a
-                href="#projects"
+                href={hero.primaryCtaHref}
                 onClick={(e) => {
+                  if (!hero.primaryCtaHref.startsWith("#")) return;
                   e.preventDefault();
-                  document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
+                  document.getElementById(hero.primaryCtaHref.slice(1))?.scrollIntoView({ behavior: "smooth" });
                 }}
                 className="group flex items-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-sm transition-all duration-300"
                 style={{
@@ -109,14 +114,14 @@ const Hero = () => {
                 data-cursor="view"
                 aria-label="View my projects"
               >
-                View Projects
+                {hero.primaryCtaLabel}
                 <ExternalLink
                   size={16}
                   className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
                 />
               </a>
               <a
-                href="https://github.com/kinghatrung"
+                href={hero.secondaryCtaHref}
                 rel="noopener noreferrer"
                 target="_blank"
                 className="flex items-center gap-2 px-6 py-3.5 rounded-xl font-semibold text-sm transition-all duration-300"
@@ -128,17 +133,19 @@ const Hero = () => {
                 data-cursor="open"
               >
                 <GithubIcon size={16} />
-                Get in Touch
+                {hero.secondaryCtaLabel}
               </a>
             </motion.div>
 
             {/* Social links */}
             <motion.div variants={itemVariants} className="flex items-center gap-6">
-              <span style={{ fontSize: 12, color: "rgba(241,245,249,0.3)", letterSpacing: "0.1em" }}>Open to Work</span>
-              <div style={{ width: 40, height: 1, background: "rgba(255,255,255,0.1)" }} />
-              <span style={{ fontSize: 12, color: "rgba(241,245,249,0.3)", letterSpacing: "0.1em" }}>
-                Ha Noi City, VN
-              </span>
+              {hero.status && (
+                <span style={{ fontSize: 12, color: "rgba(241,245,249,0.3)", letterSpacing: "0.1em" }}>{hero.status}</span>
+              )}
+              {hero.status && hero.location && <div style={{ width: 40, height: 1, background: "rgba(255,255,255,0.1)" }} />}
+              {hero.location && (
+                <span style={{ fontSize: 12, color: "rgba(241,245,249,0.3)", letterSpacing: "0.1em" }}>{hero.location}</span>
+              )}
             </motion.div>
           </motion.div>
 
@@ -178,7 +185,7 @@ const Hero = () => {
         aria-label="Scroll down"
       >
         <span style={{ fontSize: 10, letterSpacing: "0.3em", color: "rgba(241,245,249,0.3)", fontWeight: 500 }}>
-          SCROLL
+          {hero.scrollLabel}
         </span>
         <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}>
           <ArrowDown size={16} style={{ color: "rgba(79,142,247,0.5)" }} />

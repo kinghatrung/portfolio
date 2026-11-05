@@ -2,7 +2,12 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink, X, ArrowUpRight } from "lucide-react";
 import { GithubIcon } from "./ui/SocialIcons";
-import { projects } from "../data";
+import RichText from "./ui/RichText";
+import content from "../data";
+
+const { projects } = content;
+// Numbers follow the display order, so reordering projects renumbers them.
+const projectItems = projects.items.map((project, i) => ({ ...project, number: String(i + 1).padStart(2, "0") }));
 
 // Fallback abstract project preview (CSS-only)
 const AbstractPreview = ({ color, number }) => (
@@ -162,39 +167,80 @@ const ProjectModal = ({ project, onClose }) => (
                 </h3>
               </div>
               <div className="flex gap-2">
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 rounded-lg transition-colors duration-200"
-                  style={{
-                    background: "rgba(255,255,255,0.05)",
-                    border: "1px solid rgba(255,255,255,0.08)",
-                    color: "rgba(241,245,249,0.7)",
-                  }}
-                  aria-label="View source code"
-                >
-                  <GithubIcon size={18} />
-                </a>
-                <a
-                  href={project.demo}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 rounded-lg transition-colors duration-200"
-                  style={{
-                    background: "rgba(255,255,255,0.05)",
-                    border: "1px solid rgba(255,255,255,0.08)",
-                    color: "rgba(241,245,249,0.7)",
-                  }}
-                  aria-label="View live demo"
-                >
-                  <ExternalLink size={18} />
-                </a>
+                {project.github && (
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-2 rounded-lg transition-colors duration-200"
+                    style={{
+                      background: "rgba(255,255,255,0.05)",
+                      border: "1px solid rgba(255,255,255,0.08)",
+                      color: "rgba(241,245,249,0.7)",
+                    }}
+                    aria-label="View source code"
+                  >
+                    <GithubIcon size={18} />
+                  </a>
+                )}
+                {project.demo && (
+                  <a
+                    href={project.demo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-2 rounded-lg transition-colors duration-200"
+                    style={{
+                      background: "rgba(255,255,255,0.05)",
+                      border: "1px solid rgba(255,255,255,0.08)",
+                      color: "rgba(241,245,249,0.7)",
+                    }}
+                    aria-label="View live demo"
+                  >
+                    <ExternalLink size={18} />
+                  </a>
+                )}
               </div>
             </div>
-            <p style={{ fontSize: "0.95rem", lineHeight: 1.8, color: "rgba(241,245,249,0.6)", marginBottom: 20 }}>
-              {project.description}
+            <p
+              style={{
+                fontSize: "0.95rem",
+                lineHeight: 1.8,
+                color: "rgba(241,245,249,0.6)",
+                marginBottom: 20,
+                whiteSpace: "pre-line",
+              }}
+            >
+              {project.details || project.description}
             </p>
+
+            {project.facts.length > 0 && (
+              <dl className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-5">
+                {project.facts.map((fact, i) => (
+                  <div
+                    key={i}
+                    className="p-3 rounded-xl"
+                    style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.07)" }}
+                  >
+                    <dt style={{ fontSize: 11, color: "rgba(241,245,249,0.4)", marginBottom: 2 }}>{fact.label}</dt>
+                    <dd style={{ fontSize: "0.9rem", fontWeight: 600, color: "#f1f5f9" }}>{fact.value}</dd>
+                  </div>
+                ))}
+              </dl>
+            )}
+
+            {project.features.length > 0 && (
+              <ul className="flex flex-col gap-2 mb-5">
+                {project.features.map((feature, i) => (
+                  <li key={i} className="flex gap-2" style={{ fontSize: "0.9rem", color: "rgba(241,245,249,0.6)" }}>
+                    <span style={{ color: project.color }} aria-hidden="true">
+                      •
+                    </span>
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+            )}
+
             <div className="flex flex-wrap gap-2">
               {project.technologies.map((tech) => (
                 <span
@@ -213,6 +259,27 @@ const ProjectModal = ({ project, onClose }) => (
                 </span>
               ))}
             </div>
+
+            {project.gallery.length > 0 && (
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
+                {project.gallery.map((shot, i) => (
+                  <figure key={i}>
+                    <img
+                      src={shot.image}
+                      alt={shot.caption || project.title}
+                      loading="lazy"
+                      className="w-full rounded-xl"
+                      style={{ border: "1px solid rgba(255,255,255,0.08)" }}
+                    />
+                    {shot.caption && (
+                      <figcaption style={{ fontSize: 12, color: "rgba(241,245,249,0.4)", marginTop: 6 }}>
+                        {shot.caption}
+                      </figcaption>
+                    )}
+                  </figure>
+                ))}
+              </div>
+            )}
           </div>
         </motion.div>
       </motion.div>
@@ -294,28 +361,32 @@ const ProjectCard = ({ project, onClick }) => {
           className="absolute top-3 right-3 flex gap-2"
           style={{ opacity: hovered ? 1 : 0, transition: "opacity 0.25s" }}
         >
-          <a
-            href={project.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={(e) => e.stopPropagation()}
-            className="p-2 rounded-lg"
-            style={{ background: "rgba(0,0,0,0.7)", border: "1px solid rgba(255,255,255,0.1)", color: "#f1f5f9" }}
-            aria-label="Source code"
-          >
-            <GithubIcon size={14} />
-          </a>
-          <a
-            href={project.demo}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={(e) => e.stopPropagation()}
-            className="p-2 rounded-lg"
-            style={{ background: "rgba(0,0,0,0.7)", border: "1px solid rgba(255,255,255,0.1)", color: "#f1f5f9" }}
-            aria-label="Live demo"
-          >
-            <ExternalLink size={14} />
-          </a>
+          {project.github && (
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              className="p-2 rounded-lg"
+              style={{ background: "rgba(0,0,0,0.7)", border: "1px solid rgba(255,255,255,0.1)", color: "#f1f5f9" }}
+              aria-label="Source code"
+            >
+              <GithubIcon size={14} />
+            </a>
+          )}
+          {project.demo && (
+            <a
+              href={project.demo}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              className="p-2 rounded-lg"
+              style={{ background: "rgba(0,0,0,0.7)", border: "1px solid rgba(255,255,255,0.1)", color: "#f1f5f9" }}
+              aria-label="Live demo"
+            >
+              <ExternalLink size={14} />
+            </a>
+          )}
         </div>
       </div>
 
@@ -343,7 +414,7 @@ const ProjectCard = ({ project, onClick }) => {
         </div>
 
         <p style={{ fontSize: "0.875rem", lineHeight: 1.65, color: "rgba(241,245,249,0.5)", marginBottom: 16 }}>
-          {project.description.substring(0, 120)}...
+          {project.description.length > 120 ? `${project.description.substring(0, 120)}...` : project.description}
         </p>
 
         <div className="flex flex-wrap gap-2">
@@ -395,7 +466,7 @@ const Projects = () => {
             marginBottom: 16,
           }}
         >
-          — Projects
+          {projects.label}
         </motion.p>
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
           <motion.h2
@@ -405,26 +476,26 @@ const Projects = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="display-md"
           >
-            Things I've <span className="text-gradient-blue">built</span>.
+            <RichText text={projects.heading} />
           </motion.h2>
           <motion.a
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            href="https://github.com/kinghatrung"
+            href={projects.viewAllHref}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 text-sm font-medium flex-shrink-0"
             style={{ color: "#4f8ef7" }}
             data-cursor="open"
           >
-            View all on GitHub <ArrowUpRight size={16} />
+            {projects.viewAllLabel} <ArrowUpRight size={16} />
           </motion.a>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-          {projects.map((project) => (
+          {projectItems.map((project) => (
             <ProjectCard key={project.number} project={project} onClick={() => setSelectedProject(project)} />
           ))}
         </div>

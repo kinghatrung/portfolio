@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { BrowserRouter } from "react-router-dom";
+import { Suspense, lazy, useState } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import CustomCursor from "./components/ui/CustomCursor";
 import AnimatedBackground from "./components/ui/AnimatedBackground";
 import LoadingScreen from "./components/ui/LoadingScreen";
@@ -11,12 +11,18 @@ import Skills from "./components/Skills";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import content from "./data";
 
-function App() {
+const AdminLogin = lazy(() => import("./admin/AdminLogin"));
+const Admin = lazy(() => import("./admin/Admin"));
+
+const sections = { hero: Hero, about: About, experience: Experience, skills: Skills, projects: Projects, contact: Contact };
+
+function Portfolio() {
   const [loaded, setLoaded] = useState(true);
 
   return (
-    <BrowserRouter>
+    <>
       {/* Global UI */}
       <CustomCursor />
       <AnimatedBackground />
@@ -30,15 +36,27 @@ function App() {
       >
         <Navbar />
         <main>
-          <Hero />
-          <About />
-          <Experience />
-          <Skills />
-          <Projects />
-          <Contact />
+          {content.sectionOrder.map((id) => {
+            const Section = sections[id];
+            return Section && <Section key={id} />;
+          })}
         </main>
         <Footer />
       </div>
+    </>
+  );
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Suspense fallback={null}>
+        <Routes>
+          <Route path="/admin-login" element={<AdminLogin />} />
+          <Route path="/admin" element={<Admin />} />
+          <Route path="*" element={<Portfolio />} />
+        </Routes>
+      </Suspense>
     </BrowserRouter>
   );
 }

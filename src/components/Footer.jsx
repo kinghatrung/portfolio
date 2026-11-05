@@ -1,8 +1,9 @@
 import { ArrowUpRight } from "lucide-react";
-import { GithubIcon, FacebookIcon, MailIcon } from "./ui/SocialIcons";
-import { navLinks, socialLinks } from "../data";
+import { MailIcon } from "./ui/SocialIcons";
+import content, { navLinks } from "../data";
+import { socialIcons } from "../data/socialIcons";
 
-const iconMap = { github: GithubIcon, facebook: FacebookIcon, mail: MailIcon };
+const { header, footer, contact } = content;
 
 const Footer = () => (
   <footer className="relative" style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }} aria-label="Site footer">
@@ -11,10 +12,11 @@ const Footer = () => (
         {/* Brand */}
         <div className="flex flex-col items-center md:items-start gap-1">
           <span style={{ fontSize: 18, fontWeight: 700, letterSpacing: "-0.02em", color: "#f1f5f9" }}>
-            Huyen<span style={{ color: "#4f8ef7" }}>.</span>
+            {header.logoText}
+            <span style={{ color: "#4f8ef7" }}>{header.logoSuffix}</span>
           </span>
           <span style={{ fontSize: 12, color: "rgba(241,245,249,0.35)", letterSpacing: "0.05em" }}>
-            Frontend Engineer &amp; Creative Developer
+            {footer.tagline}
           </span>
         </div>
 
@@ -42,8 +44,8 @@ const Footer = () => (
 
         {/* Social */}
         <div className="flex items-center gap-3">
-          {socialLinks.map((s) => {
-            const Icon = iconMap[s.icon] || MailIcon;
+          {contact.socials.map((s) => {
+            const Icon = socialIcons[s.icon] || MailIcon;
             return (
               <a
                 key={s.label}
@@ -71,18 +73,16 @@ const Footer = () => (
         className="flex flex-col sm:flex-row items-center justify-between gap-2 mt-8 pt-6"
         style={{ borderTop: "1px solid rgba(255,255,255,0.05)" }}
       >
-        <p style={{ fontSize: 12, color: "rgba(241,245,249,0.25)" }}>
-          © 2026 Huyen Minh — Somewhere Between Dreams & Reality
-        </p>
+        <p style={{ fontSize: 12, color: "rgba(241,245,249,0.25)" }}>{footer.copyright}</p>
         <a
-          href="https://github.com/"
+          href={footer.sourceHref}
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-1 text-xs transition-colors duration-200"
           style={{ color: "rgba(241,245,249,0.25)" }}
           data-cursor="open"
         >
-          View Source <ArrowUpRight size={12} />
+          {footer.sourceLabel} <ArrowUpRight size={12} />
         </a>
       </div>
     </div>

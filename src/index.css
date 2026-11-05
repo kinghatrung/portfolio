@@ -65,6 +65,19 @@
     * {
       cursor: none !important;
     }
+
+    /* Admin pages have no CustomCursor, so they need the system one */
+    .admin-root,
+    .admin-root * {
+      cursor: auto !important;
+    }
+
+    .admin-root button,
+    .admin-root a,
+    .admin-root summary,
+    .admin-root label:has(input[type="file"]) {
+      cursor: pointer !important;
+    }
   }
 
   /* Scrollbar */

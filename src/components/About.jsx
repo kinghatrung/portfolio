@@ -1,21 +1,29 @@
 import { motion } from "framer-motion";
 import { Suspense, lazy } from "react";
-import { MapPin, Code2, Layers, Zap } from "lucide-react";
+import {
+  MapPin,
+  Code2,
+  Layers,
+  Zap,
+  Sparkles,
+  Rocket,
+  Heart,
+  Star,
+  Globe,
+  Cpu,
+  Palette,
+  Shield,
+  Terminal,
+  Smartphone,
+} from "lucide-react";
+import RichText from "./ui/RichText";
+import content from "../data";
 
 const FloatingGeometry = lazy(() => import("./three/FloatingGeometry"));
+const { about } = content;
 
-const stats = [
-  { value: "4+", label: "Years Learning" },
-  { value: "10+", label: "Projects Built" },
-  { value: "4", label: "Tech Stacks" },
-  { value: "∞", label: "Coffee Consumed" },
-];
-
-const highlights = [
-  { icon: <Code2 size={18} />, text: "Clean, maintainable code" },
-  { icon: <Layers size={18} />, text: "Full-stack capability" },
-  { icon: <Zap size={18} />, text: "Performance-focused" },
-];
+// Keep in sync with HIGHLIGHT_ICONS in admin/schema.js
+const icons = { Code2, Layers, Zap, Sparkles, Rocket, Heart, Star, Globe, Cpu, Palette, Shield, Terminal, Smartphone };
 
 const containerVariants = {
   hidden: {},
@@ -45,7 +53,7 @@ const About = () => (
           marginBottom: 16,
         }}
       >
-        — About Me
+        {about.label}
       </motion.p>
 
       <div className="flex flex-col lg:flex-row items-start gap-16">
@@ -58,48 +66,47 @@ const About = () => (
           viewport={{ once: true, margin: "-80px" }}
         >
           <motion.h2 variants={itemVariants} className="display-md">
-            Engineering <span className="text-gradient-blue">craft</span> meets creative{" "}
-            <span className="text-gradient-violet">vision</span>.
+            <RichText text={about.heading} />
           </motion.h2>
 
-          <motion.p
-            variants={itemVariants}
-            style={{ fontSize: "1.05rem", lineHeight: 1.8, color: "rgba(241,245,249,0.6)" }}
-          >
-            I'm a Frontend Engineer in Ha Noi City, Vietnam. I specialize in building performant, interactive web
-            experiences using React, Next, Node, Express and modern animation libraries.
-          </motion.p>
-
-          <motion.p
-            variants={itemVariants}
-            style={{ fontSize: "1.05rem", lineHeight: 1.8, color: "rgba(241,245,249,0.6)" }}
-          >
-            My work sits at the intersection of engineering precision and creative exploration — whether that's crafting
-            smooth UI systems, or designing interactions that feel satisfying to use. I believe the web is the most
-            accessible creative medium, and I take that seriously.
-          </motion.p>
+          {about.paragraphs.map((paragraph, i) => (
+            <motion.p
+              key={i}
+              variants={itemVariants}
+              style={{ fontSize: "1.05rem", lineHeight: 1.8, color: "rgba(241,245,249,0.6)" }}
+            >
+              {paragraph}
+            </motion.p>
+          ))}
 
           {/* Highlights */}
           <motion.div variants={itemVariants} className="flex flex-col gap-3 pt-2">
-            {highlights.map((h) => (
-              <div key={h.text} className="flex items-center gap-3" style={{ color: "rgba(241,245,249,0.7)" }}>
-                <span style={{ color: "#4f8ef7" }}>{h.icon}</span>
-                <span style={{ fontSize: "0.95rem" }}>{h.text}</span>
-              </div>
-            ))}
+            {about.highlights.map((h, i) => {
+              const Icon = icons[h.icon] || Sparkles;
+              return (
+                <div key={i} className="flex items-center gap-3" style={{ color: "rgba(241,245,249,0.7)" }}>
+                  <span style={{ color: "#4f8ef7" }}>
+                    <Icon size={18} />
+                  </span>
+                  <span style={{ fontSize: "0.95rem" }}>{h.text}</span>
+                </div>
+              );
+            })}
           </motion.div>
 
           {/* Location */}
-          <motion.div variants={itemVariants} className="flex items-center gap-2 pt-2">
-            <MapPin size={14} style={{ color: "#4f8ef7" }} />
-            <span style={{ fontSize: "0.9rem", color: "rgba(241,245,249,0.4)" }}>Ha Noi City, Vietnam</span>
-          </motion.div>
+          {about.location && (
+            <motion.div variants={itemVariants} className="flex items-center gap-2 pt-2">
+              <MapPin size={14} style={{ color: "#4f8ef7" }} />
+              <span style={{ fontSize: "0.9rem", color: "rgba(241,245,249,0.4)" }}>{about.location}</span>
+            </motion.div>
+          )}
 
           {/* Stats */}
           <motion.div variants={itemVariants} className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4">
-            {stats.map((s) => (
+            {about.stats.map((s, i) => (
               <div
-                key={s.label}
+                key={i}
                 className="flex flex-col items-center justify-center p-4 rounded-xl"
                 style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.07)" }}
               >

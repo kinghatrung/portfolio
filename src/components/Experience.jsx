@@ -1,5 +1,8 @@
 import { motion } from "framer-motion";
-import { experiences } from "../data";
+import RichText from "./ui/RichText";
+import content from "../data";
+
+const { experience } = content;
 
 const TimelineCard = ({ exp, index }) => {
   const isLeft = index % 2 === 0;
@@ -126,7 +129,7 @@ const Experience = () => (
           marginBottom: 16,
         }}
       >
-        — Experience
+        {experience.label}
       </motion.p>
 
       <motion.h2
@@ -136,7 +139,7 @@ const Experience = () => (
         transition={{ duration: 0.6, delay: 0.1 }}
         className="display-md mb-16"
       >
-        Where I've <span className="text-gradient-blue">worked</span>.
+        <RichText text={experience.heading} />
       </motion.h2>
 
       {/* Timeline */}
@@ -165,7 +168,7 @@ const Experience = () => (
         />
 
         <div className="flex flex-col gap-12">
-          {experiences.map((exp, i) => (
+          {experience.items.map((exp, i) => (
             <div
               key={exp.title + i}
               className="

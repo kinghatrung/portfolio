@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { navLinks } from "../data";
+import content, { navLinks } from "../data";
+
+const { header } = content;
 
 const Navbar = () => {
   const [active, setActive] = useState("");
@@ -84,7 +86,8 @@ const Navbar = () => {
                 color: "#f1f5f9",
               }}
             >
-              Huyen<span style={{ color: "#4f8ef7" }}>.</span>
+              {header.logoText}
+              <span style={{ color: "#4f8ef7" }}>{header.logoSuffix}</span>
             </span>
           </a>
 
@@ -117,7 +120,7 @@ const Navbar = () => {
 
           {/* Desktop CTA */}
           <a
-            href="mailto:nmhuyen2706@gmail.com"
+            href={header.ctaHref}
             className="hidden md:flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200"
             style={{
               background: "rgba(79,142,247,0.1)",
@@ -126,7 +129,7 @@ const Navbar = () => {
             }}
             data-cursor="open"
           >
-            Hire Me
+            {header.ctaLabel}
           </a>
 
           {/* Mobile menu button */}
@@ -184,7 +187,7 @@ const Navbar = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0 }}
                 transition={{ delay: navLinks.length * 0.07 + 0.1, duration: 0.3 }}
-                href="mailto:nmhuyen2706@gmail.com"
+                href={header.ctaHref}
                 className="mt-8 px-8 py-3 rounded-xl font-semibold text-lg"
                 style={{
                   background: "rgba(79,142,247,0.15)",
@@ -193,7 +196,7 @@ const Navbar = () => {
                 }}
                 onClick={() => setMobileOpen(false)}
               >
-                Hire Me
+                {header.ctaLabel}
               </motion.a>
             </div>
           </motion.div>

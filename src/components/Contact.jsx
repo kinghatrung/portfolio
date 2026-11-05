@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight, Copy, Check } from "lucide-react";
-import { GithubIcon, FacebookIcon, MailIcon } from "./ui/SocialIcons";
-import { socialLinks } from "../data";
+import { MailIcon } from "./ui/SocialIcons";
+import RichText from "./ui/RichText";
+import content from "../data";
+import { socialIcons } from "../data/socialIcons";
 
-const EMAIL = "nmhuyen2706@gmail.com";
+const { contact } = content;
+const EMAIL = contact.email;
 
 const Contact = () => {
   const [copied, setCopied] = useState(false);
@@ -15,8 +18,6 @@ const Contact = () => {
       setTimeout(() => setCopied(false), 2000);
     });
   };
-
-  const iconMap = { github: GithubIcon, facebook: FacebookIcon, mail: MailIcon };
 
   return (
     <section id="contact" className="relative section-padding overflow-hidden" aria-label="Contact">
@@ -58,7 +59,7 @@ const Contact = () => {
               marginBottom: 24,
             }}
           >
-            — Get In Touch
+            {contact.label}
           </motion.p>
 
           <motion.h2
@@ -69,7 +70,7 @@ const Contact = () => {
             className="display-lg mb-6"
             style={{ lineHeight: 1.05 }}
           >
-            Let's build something <span className="text-gradient-blue">extraordinary</span>.
+            <RichText text={contact.heading} />
           </motion.h2>
 
           <motion.p
@@ -85,8 +86,7 @@ const Contact = () => {
               maxWidth: 480,
             }}
           >
-            I'm always open to new opportunities, interesting projects, and creative collaborations. If you have an
-            idea, let's talk.
+            {contact.description}
           </motion.p>
 
           {/* Primary CTA */}
@@ -108,7 +108,7 @@ const Contact = () => {
               }}
               data-cursor="open"
             >
-              START A PROJECT
+              {contact.ctaLabel}
               <ArrowUpRight
                 size={20}
                 className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
@@ -136,10 +136,10 @@ const Contact = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.35 }}
-            className="flex items-center gap-4"
+            className="flex flex-wrap justify-center items-center gap-4"
           >
-            {socialLinks.map((link) => {
-              const Icon = iconMap[link.icon] || MailIcon;
+            {contact.socials.map((link) => {
+              const Icon = socialIcons[link.icon] || MailIcon;
               return (
                 <a
                   key={link.label}
