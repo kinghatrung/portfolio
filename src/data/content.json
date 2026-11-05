@@ -1,5 +1,12 @@
 {
-  "sectionOrder": ["hero", "about", "experience", "skills", "projects", "contact"],
+  "sectionOrder": [
+    "about",
+    "hero",
+    "experience",
+    "skills",
+    "projects",
+    "contact"
+  ],
   "site": {
     "title": "Huyen Minh — Frontend Engineer",
     "description": "Huyen Minh is a Frontend Engineer specializing in Three.js, React, and immersive web experiences.",
@@ -36,16 +43,37 @@
       "My work sits at the intersection of engineering precision and creative exploration — whether that's crafting smooth UI systems, or designing interactions that feel satisfying to use. I believe the web is the most accessible creative medium, and I take that seriously."
     ],
     "highlights": [
-      { "icon": "Code2", "text": "Clean, maintainable code" },
-      { "icon": "Layers", "text": "Full-stack capability" },
-      { "icon": "Zap", "text": "Performance-focused" }
+      {
+        "icon": "Code2",
+        "text": "Clean, maintainable code"
+      },
+      {
+        "icon": "Layers",
+        "text": "Full-stack capability"
+      },
+      {
+        "icon": "Zap",
+        "text": "Performance-focused"
+      }
     ],
     "location": "Ha Noi City, Vietnam",
     "stats": [
-      { "value": "4+", "label": "Years Learning" },
-      { "value": "10+", "label": "Projects Built" },
-      { "value": "4", "label": "Tech Stacks" },
-      { "value": "∞", "label": "Coffee Consumed" }
+      {
+        "value": "4+",
+        "label": "Years Learning"
+      },
+      {
+        "value": "10+",
+        "label": "Projects Built"
+      },
+      {
+        "value": "4",
+        "label": "Tech Stacks"
+      },
+      {
+        "value": "∞",
+        "label": "Coffee Consumed"
+      }
     ]
   },
   "experience": {
@@ -58,28 +86,48 @@
         "company": "Tech Startup",
         "duration": "Jun 2024 – Sep 2024",
         "description": "Built responsive React dashboards, integrated REST APIs, and improved core UI performance by 40% through code splitting and lazy loading techniques.",
-        "technologies": ["React", "TypeScript", "Tailwind CSS", "REST API"]
+        "technologies": [
+          "React",
+          "TypeScript",
+          "Tailwind CSS",
+          "REST API"
+        ]
       },
       {
         "title": "Freelance Creative Developer",
         "company": "Self-employed",
         "duration": "Jan 2024 – Present",
         "description": "Designed and developed immersive 3D web experiences for clients using Three.js and React Three Fiber. Delivered end-to-end solutions from design system to deployment.",
-        "technologies": ["Three.js", "React Three Fiber", "Framer Motion", "GSAP"]
+        "technologies": [
+          "Three.js",
+          "React Three Fiber",
+          "Framer Motion",
+          "GSAP"
+        ]
       },
       {
         "title": "Full-Stack Developer",
         "company": "Open Source Projects",
         "duration": "Aug 2023 – Present",
         "description": "Contributed to open source projects, building full-stack features using Node.js, PostgreSQL, and WebSocket for real-time communication platforms.",
-        "technologies": ["Node.js", "PostgreSQL", "Socket.IO", "Docker"]
+        "technologies": [
+          "Node.js",
+          "PostgreSQL",
+          "Socket.IO",
+          "Docker"
+        ]
       },
       {
         "title": "Computer Science Student",
         "company": "University",
         "duration": "Sep 2022 – Present",
         "description": "Pursuing Computer Science with a focus on web technologies, algorithms, and software engineering principles. Dean's List recipient for two consecutive semesters.",
-        "technologies": ["React", "Next.js", "Python", "Data Structures"]
+        "technologies": [
+          "React",
+          "Next.js",
+          "Python",
+          "Data Structures"
+        ]
       }
     ]
   },
@@ -93,39 +141,102 @@
         "name": "Frontend",
         "color": "#4f8ef7",
         "skills": [
-          { "name": "HTML5", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" },
-          { "name": "CSS3", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" },
-          { "name": "JavaScript", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
-          { "name": "Sass", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg" },
-          { "name": "TypeScript", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
-          { "name": "React", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
-          { "name": "Next.js", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
-          { "name": "React Native", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
-          { "name": "Expo", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/expo/expo-original.svg" },
-          { "name": "Tailwind", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
-          { "name": "Bootstrap", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" }
+          {
+            "name": "HTML5",
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+          },
+          {
+            "name": "CSS3",
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
+          },
+          {
+            "name": "JavaScript",
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+          },
+          {
+            "name": "Sass",
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg"
+          },
+          {
+            "name": "TypeScript",
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
+          },
+          {
+            "name": "React",
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
+          },
+          {
+            "name": "Next.js",
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg"
+          },
+          {
+            "name": "React Native",
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
+          },
+          {
+            "name": "Expo",
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/expo/expo-original.svg"
+          },
+          {
+            "name": "Tailwind",
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg"
+          },
+          {
+            "name": "Bootstrap",
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg"
+          }
         ]
       },
       {
         "name": "Backend",
         "color": "#7c3aed",
         "skills": [
-          { "name": "Node.js", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
-          { "name": "Express", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" },
-          { "name": "PostgreSQL", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" },
-          { "name": "MongoDB", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" },
-          { "name": "Redis", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg" }
+          {
+            "name": "Node.js",
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
+          },
+          {
+            "name": "Express",
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg"
+          },
+          {
+            "name": "PostgreSQL",
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg"
+          },
+          {
+            "name": "MongoDB",
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg"
+          },
+          {
+            "name": "Redis",
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg"
+          }
         ]
       },
       {
         "name": "Tools",
         "color": "#f59e0b",
         "skills": [
-          { "name": "Git", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
-          { "name": "GitLab", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/gitlab/gitlab-original.svg" },
-          { "name": "Docker", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" },
-          { "name": "Figma", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" },
-          { "name": "VS Code", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" }
+          {
+            "name": "Git",
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
+          },
+          {
+            "name": "GitLab",
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/gitlab/gitlab-original.svg"
+          },
+          {
+            "name": "Docker",
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"
+          },
+          {
+            "name": "Figma",
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg"
+          },
+          {
+            "name": "VS Code",
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg"
+          }
         ]
       }
     ]
@@ -141,7 +252,15 @@
         "title": "Real-time Chat Platform",
         "description": "A modern real-time chat platform built as a full-stack monorepo with Web, Mobile and API applications.",
         "image": "/uploads/carrent.png",
-        "technologies": ["Next.js", "React Native", "Node.js", "Express.js", "TypeScript", "Socket.IO", "MongoDB"],
+        "technologies": [
+          "Next.js",
+          "React Native",
+          "Node.js",
+          "Express.js",
+          "TypeScript",
+          "Socket.IO",
+          "MongoDB"
+        ],
         "github": "https://github.com/kinghatrung/halo-chat-platform",
         "demo": "https://github.com/kinghatrung/halo-chat-platform",
         "color": "#4f8ef7",
@@ -154,7 +273,14 @@
         "title": "Room Finder Platform",
         "description": "Smart rental platform for finding, listing, booking, and managing rooms across Web & Mobile.",
         "image": "/uploads/jobit.png",
-        "technologies": ["Next.js", "React Native", "Node.js", "Express.js", "TypeScript", "MongoDB"],
+        "technologies": [
+          "Next.js",
+          "React Native",
+          "Node.js",
+          "Express.js",
+          "TypeScript",
+          "MongoDB"
+        ],
         "github": "https://github.com/kinghatrung/tro_oi_platform",
         "demo": "https://github.com/kinghatrung/tro_oi_platform",
         "color": "#7c3aed",
@@ -167,7 +293,12 @@
         "title": "3D Creative Portfolio",
         "description": "This very website — an immersive 3D portfolio built with React Three Fiber, custom GLSL shaders, and Framer Motion. Features interactive scenes, custom cursor, and cinematic loading screen.",
         "image": "/uploads/portfolio.png",
-        "technologies": ["React", "Three.js", "React Three Fiber", "Framer Motion"],
+        "technologies": [
+          "React",
+          "Three.js",
+          "React Three Fiber",
+          "Framer Motion"
+        ],
         "github": "https://github.com/",
         "demo": "#",
         "color": "#22d3ee",
@@ -180,7 +311,16 @@
         "title": "News Aggregation Platform",
         "description": "A full-stack news platform with separate Frontend, Backend and Machine Learning services for automated content moderation.",
         "image": "/uploads/viet-news.png",
-        "technologies": ["React", "Node.js", "Express.js", "Python", "Flask", "NLP", "Machine Learning", "MongoDB"],
+        "technologies": [
+          "React",
+          "Node.js",
+          "Express.js",
+          "Python",
+          "Flask",
+          "NLP",
+          "Machine Learning",
+          "MongoDB"
+        ],
         "github": "https://github.com/kinghatrung/vietnews",
         "demo": "https://vietnews.onrender.com/",
         "color": "#f59e0b",
@@ -193,7 +333,15 @@
         "title": "Insight - Blog & Analytics Platform",
         "description": "Full-stack blog platform with analytics dashboard, RBAC, Redis view tracking, Cloudinary and modern React architecture.",
         "image": "/uploads/in-blog.png",
-        "technologies": ["React", "Node.js", "Express.js", "TypeScript", "Redis", "Cloudinary", "MongoDB"],
+        "technologies": [
+          "React",
+          "Node.js",
+          "Express.js",
+          "TypeScript",
+          "Redis",
+          "Cloudinary",
+          "MongoDB"
+        ],
         "github": "https://github.com/kinghatrung/Insight_blog",
         "demo": "https://insight-blog-eta.vercel.app/",
         "color": "#f59e0b",
@@ -212,9 +360,21 @@
     "ctaLabel": "START A PROJECT",
     "email": "nmhuyen2706@gmail.com",
     "socials": [
-      { "label": "GitHub", "href": "https://github.com/kinghatrung", "icon": "github" },
-      { "label": "Facebook", "href": "https://www.facebook.com/huyen2706", "icon": "facebook" },
-      { "label": "Email", "href": "mailto:nmhuyen2706@gmail.com", "icon": "mail" }
+      {
+        "label": "GitHub",
+        "href": "https://github.com/kinghatrung",
+        "icon": "github"
+      },
+      {
+        "label": "Facebook",
+        "href": "https://www.facebook.com/huyen2706",
+        "icon": "facebook"
+      },
+      {
+        "label": "Email",
+        "href": "mailto:nmhuyen2706@gmail.com",
+        "icon": "mail"
+      }
     ]
   },
   "footer": {
