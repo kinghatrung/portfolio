@@ -31,6 +31,7 @@ jobs:
         run: |
           install -m 700 -d ~/.ssh
           echo "$VPS_KNOWN_HOSTS" > ~/.ssh/known_hosts
-          echo "$VPS_SSH_KEY" > ~/.ssh/id_ed25519
+          # Base64 so line breaks or spaces added when copying from a terminal cannot corrupt the key.
+          echo "$VPS_SSH_KEY" | base64 -di > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
           rsync -az --delete dist/ "deploy@$VPS_HOST:/var/www/portfolio/"
