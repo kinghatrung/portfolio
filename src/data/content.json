@@ -12,7 +12,8 @@
     "description": "Huyen Minh is a Frontend Engineer specializing in Three.js, React, and immersive web experiences.",
     "author": "Huyen Minh",
     "ogDescription": "Building immersive 3D web experiences with React and Three.js.",
-    "loadingText": "LOADING EXPERIENCE"
+    "loadingText": "LOADING EXPERIENCE",
+    "favicon": "/favicon.svg"
   },
   "header": {
     "logoText": "Huyen",

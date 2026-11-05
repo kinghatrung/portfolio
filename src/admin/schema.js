@@ -192,6 +192,7 @@ export const sections = [
       text("author", "Tác giả"),
       textarea("ogDescription", "Mô tả khi chia sẻ link"),
       text("loadingText", "Chữ màn hình tải"),
+      image("favicon", "Icon trên tab trình duyệt"),
     ],
   },
 ];
