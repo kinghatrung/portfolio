@@ -13,9 +13,22 @@ const AnimatedBackground = () => {
     const isMobile = window.matchMedia("(max-width: 768px)").matches;
     const PARTICLE_COUNT = isMobile ? 40 : 100;
 
+    // Subtle radial gradient center glow; it only changes with the viewport size, so build it once per resize.
+    let glow;
     const resize = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
+      glow = ctx.createRadialGradient(
+        canvas.width * 0.5,
+        canvas.height * 0.3,
+        0,
+        canvas.width * 0.5,
+        canvas.height * 0.3,
+        canvas.width * 0.6,
+      );
+      glow.addColorStop(0, "rgba(79, 142, 247, 0.04)");
+      glow.addColorStop(0.5, "rgba(124, 58, 237, 0.02)");
+      glow.addColorStop(1, "transparent");
     };
     resize();
     window.addEventListener("resize", resize);
@@ -33,20 +46,7 @@ const AnimatedBackground = () => {
     let raf;
     const draw = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      // Subtle radial gradient center glow
-      const grd = ctx.createRadialGradient(
-        canvas.width * 0.5,
-        canvas.height * 0.3,
-        0,
-        canvas.width * 0.5,
-        canvas.height * 0.3,
-        canvas.width * 0.6,
-      );
-      grd.addColorStop(0, "rgba(79, 142, 247, 0.04)");
-      grd.addColorStop(0.5, "rgba(124, 58, 237, 0.02)");
-      grd.addColorStop(1, "transparent");
-      ctx.fillStyle = grd;
+      ctx.fillStyle = glow;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       // Particles
@@ -70,11 +70,13 @@ const AnimatedBackground = () => {
 
     draw();
 
-    // Mouse-following glow (CSS based, not canvas for perf)
+    // Mouse-following glow: moving a fixed-size layer is compositor-only, while rewriting a
+    // full-screen gradient repainted the whole viewport on every mouse move.
     const onMove = (e) => {
       mouse.current = { x: e.clientX, y: e.clientY };
       if (glowRef.current) {
-        glowRef.current.style.background = `radial-gradient(600px circle at ${e.clientX}px ${e.clientY}px, rgba(79, 142, 247, 0.06), transparent 60%)`;
+        glowRef.current.style.opacity = "1";
+        glowRef.current.style.transform = `translate(${e.clientX - 600}px, ${e.clientY - 600}px)`;
       }
     };
     window.addEventListener("mousemove", onMove, { passive: true });
@@ -109,7 +111,14 @@ const AnimatedBackground = () => {
       {/* Mouse glow layer */}
       <div
         ref={glowRef}
-        className="fixed inset-0 pointer-events-none z-0 transition-[background] duration-300"
+        className="fixed top-0 left-0 pointer-events-none z-0"
+        style={{
+          width: 1200,
+          height: 1200,
+          opacity: 0,
+          willChange: "transform",
+          background: "radial-gradient(600px circle at center, rgba(79, 142, 247, 0.06), transparent 60%)",
+        }}
         aria-hidden="true"
       />
       {/* Noise overlay */}

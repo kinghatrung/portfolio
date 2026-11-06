@@ -252,7 +252,7 @@
       {
         "title": "Real-time Chat Platform",
         "description": "A modern real-time chat platform built as a full-stack monorepo with Web, Mobile and API applications.",
-        "image": "/uploads/carrent.png",
+        "image": "/uploads/carrent.webp",
         "technologies": [
           "Next.js",
           "React Native",
@@ -273,7 +273,7 @@
       {
         "title": "Room Finder Platform",
         "description": "Smart rental platform for finding, listing, booking, and managing rooms across Web & Mobile.",
-        "image": "/uploads/jobit.png",
+        "image": "/uploads/jobit.webp",
         "technologies": [
           "Next.js",
           "React Native",
@@ -293,7 +293,7 @@
       {
         "title": "3D Creative Portfolio",
         "description": "This very website — an immersive 3D portfolio built with React Three Fiber, custom GLSL shaders, and Framer Motion. Features interactive scenes, custom cursor, and cinematic loading screen.",
-        "image": "/uploads/portfolio.png",
+        "image": "/uploads/portfolio.webp",
         "technologies": [
           "React",
           "Three.js",
@@ -311,7 +311,7 @@
       {
         "title": "News Aggregation Platform",
         "description": "A full-stack news platform with separate Frontend, Backend and Machine Learning services for automated content moderation.",
-        "image": "/uploads/viet-news.png",
+        "image": "/uploads/viet-news.webp",
         "technologies": [
           "React",
           "Node.js",
@@ -333,7 +333,7 @@
       {
         "title": "Insight - Blog & Analytics Platform",
         "description": "Full-stack blog platform with analytics dashboard, RBAC, Redis view tracking, Cloudinary and modern React architecture.",
-        "image": "/uploads/in-blog.png",
+        "image": "/uploads/in-blog.webp",
         "technologies": [
           "React",
           "Node.js",

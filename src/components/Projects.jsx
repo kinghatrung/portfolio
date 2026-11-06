@@ -119,6 +119,7 @@ const ProjectModal = ({ project, onClose }) => (
               <img
                 src={project.image}
                 alt={project.title}
+                decoding="async"
                 style={{ width: "100%", height: "100%", objectFit: "cover" }}
               />
             ) : (
@@ -323,6 +324,8 @@ const ProjectCard = ({ project, onClick }) => {
             <img
               src={project.image}
               alt={project.title}
+              loading="lazy"
+              decoding="async"
               style={{ width: "100%", height: "100%", objectFit: "cover" }}
             />
           ) : (

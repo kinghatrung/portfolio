@@ -1,7 +1,7 @@
-import { Suspense } from "react";
+import { Suspense, useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Float, MeshDistortMaterial } from "@react-three/drei";
-import { useRef } from "react";
+import { useOnScreen } from "./useOnScreen";
 
 const FloatingShape = () => {
   const ref = useRef(null);
@@ -29,20 +29,28 @@ const FloatingShape = () => {
   );
 };
 
-const FloatingGeometry = () => (
-  <Canvas
-    dpr={[1, 1.5]}
-    camera={{ position: [0, 0, 4], fov: 50 }}
-    style={{ background: "transparent" }}
-    gl={{ antialias: true, alpha: true }}
-  >
-    <Suspense fallback={null}>
-      <ambientLight intensity={0.4} />
-      <pointLight position={[3, 3, 3]} intensity={1.5} color="#7c3aed" />
-      <pointLight position={[-3, -2, 2]} intensity={0.5} color="#4f8ef7" />
-      <FloatingShape />
-    </Suspense>
-  </Canvas>
-);
+const FloatingGeometry = () => {
+  const [wrapperRef, onScreen] = useOnScreen();
+
+  return (
+    <div ref={wrapperRef} style={{ width: "100%", height: "100%" }}>
+      <Canvas
+        frameloop={onScreen ? "always" : "never"}
+        resize={{ offsetSize: true }}
+        dpr={[1, 1.5]}
+        camera={{ position: [0, 0, 4], fov: 50 }}
+        style={{ background: "transparent" }}
+        gl={{ antialias: true, alpha: true }}
+      >
+        <Suspense fallback={null}>
+          <ambientLight intensity={0.4} />
+          <pointLight position={[3, 3, 3]} intensity={1.5} color="#7c3aed" />
+          <pointLight position={[-3, -2, 2]} intensity={0.5} color="#4f8ef7" />
+          <FloatingShape />
+        </Suspense>
+      </Canvas>
+    </div>
+  );
+};
 
 export default FloatingGeometry;

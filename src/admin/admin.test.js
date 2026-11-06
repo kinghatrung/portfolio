@@ -4,6 +4,7 @@ import content from "../data/content.json" with { type: "json" };
 import { sections, emptyItem, move } from "./schema.js";
 import { imageFileName, loadContent, login, saveContent, uploadImage } from "./github.js";
 import { parseRichText } from "../utils/richText.js";
+import { toWebp } from "./image.js";
 
 const store = new Map();
 globalThis.sessionStorage = {
@@ -145,4 +146,43 @@ test("uploadImage commits to public/uploads and returns the public path", async 
   assert.match(path, /^\/uploads\/\d+-logo\.png$/);
   assert.ok(calls[0].url.endsWith(`/contents/public${path}`));
   assert.equal(JSON.parse(calls[0].options.body).content, "AQID");
+});
+
+test("toWebp shrinks png/jpeg to a WebP of at most 1600px and leaves other files alone", async () => {
+  let drawn;
+  globalThis.createImageBitmap = async () => ({ width: 4000, height: 2000, close() {} });
+  globalThis.OffscreenCanvas = class {
+    constructor(w, h) {
+      this.width = w;
+      this.height = h;
+    }
+    getContext() {
+      return { drawImage: (_, x, y, w, h) => (drawn = [w, h]) };
+    }
+    async convertToBlob({ type }) {
+      return new Blob([new Uint8Array(10)], { type: blobType ?? type });
+    }
+  };
+  let blobType;
+  const big = new File([new Uint8Array(1000)], "Shot.PNG", { type: "image/png" });
+
+  const out = await toWebp(big);
+  assert.deepEqual(drawn, [1600, 800]);
+  assert.equal(out.name, "Shot.webp");
+  assert.equal(out.type, "image/webp");
+
+  const svg = new File(["<svg/>"], "logo.svg", { type: "image/svg+xml" });
+  assert.equal(await toWebp(svg), svg);
+
+  blobType = "image/png"; // browser without WebP encoding
+  assert.equal(await toWebp(big), big);
+
+  blobType = undefined;
+  const tiny = new File([new Uint8Array(5)], "dot.png", { type: "image/png" });
+  assert.equal(await toWebp(tiny), tiny); // re-encoding would not save anything
+
+  globalThis.createImageBitmap = async () => {
+    throw new Error("cannot decode");
+  };
+  assert.equal(await toWebp(big), big);
 });

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ArrowDown, ArrowUp, Plus, Trash2, Upload } from "lucide-react";
 import { uploadImage } from "./github";
+import { toWebp } from "./image";
 import { emptyItem, move } from "./schema";
 
 const inputClass =
@@ -53,8 +54,9 @@ function ImageField({ field, value = "", onChange, setBusy }) {
     setError("");
     setBusy(true); // Form is locked while uploading, so this onChange can't overwrite newer edits.
     try {
-      const path = await uploadImage(file);
-      localPreviews.set(path, URL.createObjectURL(file));
+      const image = await toWebp(file);
+      const path = await uploadImage(image);
+      localPreviews.set(path, URL.createObjectURL(image));
       onChange(path);
     } catch (err) {
       setError(err.message);

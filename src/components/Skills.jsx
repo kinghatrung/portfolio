@@ -33,6 +33,8 @@ const SkillIcon = ({ skill, categoryColor }) => {
           <img
             src={skill.icon}
             alt={skill.name}
+            loading="lazy"
+            decoding="async"
             width={32}
             height={32}
             style={{
