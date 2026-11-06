@@ -19,6 +19,7 @@ const CustomCursor = () => {
         dotRef.current.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
       }
       if (!visible) setVisible(true);
+      if (!raf.current) raf.current = requestAnimationFrame(animateRing);
     };
 
     const onEnter = (e) => {
@@ -36,15 +37,16 @@ const CustomCursor = () => {
 
     const animateRing = () => {
       const lerp = 0.1;
-      ringPos.current.x += (pos.current.x - ringPos.current.x) * lerp;
-      ringPos.current.y += (pos.current.y - ringPos.current.y) * lerp;
+      const dx = pos.current.x - ringPos.current.x;
+      const dy = pos.current.y - ringPos.current.y;
+      ringPos.current.x += dx * lerp;
+      ringPos.current.y += dy * lerp;
       if (ringRef.current) {
         ringRef.current.style.transform = `translate(${ringPos.current.x}px, ${ringPos.current.y}px)`;
       }
-      raf.current = requestAnimationFrame(animateRing);
+      // Stop once the ring has caught up; onMove restarts it. A still mouse no longer renders every frame.
+      raf.current = Math.abs(dx) + Math.abs(dy) > 0.1 ? requestAnimationFrame(animateRing) : null;
     };
-
-    raf.current = requestAnimationFrame(animateRing);
     document.addEventListener("mousemove", onMove);
     document.addEventListener("mouseover", onEnter);
     document.addEventListener("mouseout", onLeave);
@@ -53,7 +55,8 @@ const CustomCursor = () => {
       document.removeEventListener("mousemove", onMove);
       document.removeEventListener("mouseover", onEnter);
       document.removeEventListener("mouseout", onLeave);
-      if (raf.current) cancelAnimationFrame(raf.current);
+      cancelAnimationFrame(raf.current);
+      raf.current = null; // the effect re-runs when `visible` changes; a stale id would block the restart in onMove
     };
   }, [visible]);
 

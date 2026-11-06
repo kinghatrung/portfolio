@@ -3,8 +3,9 @@ import { Canvas, useFrame, useLoader } from "@react-three/fiber";
 import { MeshDistortMaterial, Environment, Float } from "@react-three/drei";
 import { EquirectangularReflectionMapping, SRGBColorSpace, TextureLoader } from "three";
 import { useOnScreen } from "./useOnScreen";
+import cityUrl from "./city.jpg";
 
-// public/env/city.jpg is drei's "city" HDR baked to a 50 KB JPG. The preset downloaded 1.5 MB from a
+// city.jpg is drei's "city" HDR baked to a 50 KB JPG. The preset downloaded 1.5 MB from a
 // third-party CDN on every visit; clamped highlights are the only loss and the glass hides them.
 class EquirectLoader extends TextureLoader {
   load(url, onLoad, onProgress, onError) {
@@ -17,7 +18,7 @@ class EquirectLoader extends TextureLoader {
   }
 }
 
-const CityEnvironment = () => <Environment map={useLoader(EquirectLoader, "/env/city.jpg")} />;
+const CityEnvironment = () => <Environment map={useLoader(EquirectLoader, cityUrl)} />;
 
 const InteractiveGeometry = ({ mouse }) => {
   const meshRef = useRef(null);

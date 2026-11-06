@@ -73,10 +73,11 @@ const Hero = () => {
             )}
 
             {/* Main heading */}
-            <motion.h1 variants={itemVariants} className="display-xl mb-4" style={{ color: "#f1f5f9" }}>
+            {/* Not animated: it is the largest element, and fading it in delayed LCP (it plays behind the loading screen anyway). */}
+            <h1 className="display-xl mb-4" style={{ color: "#f1f5f9" }}>
               <RichText text={hero.heading} />
               <span style={{ color: "rgba(79,142,247,0.6)" }}>{hero.headingSuffix}</span>
-            </motion.h1>
+            </h1>
 
             {/* Role */}
             <motion.h2
@@ -187,9 +188,10 @@ const Hero = () => {
         <span style={{ fontSize: 10, letterSpacing: "0.3em", color: "rgba(241,245,249,0.3)", fontWeight: 500 }}>
           {hero.scrollLabel}
         </span>
-        <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}>
+        {/* CSS, not framer-motion: a JS loop restyled this every frame forever, even after scrolling away. */}
+        <div className="scroll-hint">
           <ArrowDown size={16} style={{ color: "rgba(79,142,247,0.5)" }} />
-        </motion.div>
+        </div>
       </motion.div>
 
       {/* Bottom fade */}

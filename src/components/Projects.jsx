@@ -292,7 +292,7 @@ const ProjectCard = ({ project, onClick }) => {
   const [hovered, setHovered] = useState(false);
 
   return (
-    <motion.article
+    <motion.div
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
@@ -310,7 +310,11 @@ const ProjectCard = ({ project, onClick }) => {
       data-cursor="view"
       tabIndex={0}
       role="button"
-      onKeyDown={(e) => e.key === "Enter" && onClick()}
+      onKeyDown={(e) => {
+        if (e.key !== "Enter" && e.key !== " ") return;
+        e.preventDefault(); // Space would otherwise scroll the page
+        onClick();
+      }}
       aria-label={`View ${project.title} project details`}
     >
       {/* Image area */}
@@ -444,7 +448,7 @@ const ProjectCard = ({ project, onClick }) => {
           )}
         </div>
       </div>
-    </motion.article>
+    </motion.div>
   );
 };
 
