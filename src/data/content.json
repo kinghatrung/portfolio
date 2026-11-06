@@ -291,24 +291,6 @@
         "gallery": []
       },
       {
-        "title": "3D Creative Portfolio",
-        "description": "This very website — an immersive 3D portfolio built with React Three Fiber, custom GLSL shaders, and Framer Motion. Features interactive scenes, custom cursor, and cinematic loading screen.",
-        "image": "/uploads/portfolio.webp",
-        "technologies": [
-          "React",
-          "Three.js",
-          "React Three Fiber",
-          "Framer Motion"
-        ],
-        "github": "https://github.com/",
-        "demo": "#",
-        "color": "#22d3ee",
-        "details": "",
-        "facts": [],
-        "features": [],
-        "gallery": []
-      },
-      {
         "title": "News Aggregation Platform",
         "description": "A full-stack news platform with separate Frontend, Backend and Machine Learning services for automated content moderation.",
         "image": "/uploads/viet-news.webp",
