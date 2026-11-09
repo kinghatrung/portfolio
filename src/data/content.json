@@ -268,7 +268,16 @@
         "details": "",
         "facts": [],
         "features": [],
-        "gallery": []
+        "gallery": [
+          {
+            "image": "/uploads/1794189999383-723c51e3-d78a-4bc8-9d5d-4fcebfb876f3.webp",
+            "caption": "Giao diện màn hình Chat của người dùng"
+          },
+          {
+            "image": "/uploads/1794190018888-606fe6c9-a058-42be-b437-8fec541508f3.webp",
+            "caption": "Giao diện khi người dùng call hoặc video call"
+          }
+        ]
       },
       {
         "title": "Room Finder Platform",
@@ -288,7 +297,12 @@
         "details": "",
         "facts": [],
         "features": [],
-        "gallery": []
+        "gallery": [
+          {
+            "image": "",
+            "caption": ""
+          }
+        ]
       },
       {
         "title": "News Aggregation Platform",
